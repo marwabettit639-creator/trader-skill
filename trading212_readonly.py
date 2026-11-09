@@ -52,5 +52,27 @@ class Trading212ReadOnly:
         return self._get("/equity/orders")
 
 
-if __name__ == "__main__":
-    print("Trading 212 read-only module created.")
+
+    if __name__ == "__main__":
+
+    try:
+
+        client = Trading212ReadOnly()
+
+        # Force Demo environment
+
+        client.base_url = "https://demo.trading212.com/api/v0"
+
+        print("Testing Trading 212 Demo connection...")
+
+        result = client.account_summary()
+
+        print("Connection successful!")
+
+        print(json.dumps(result, indent=2))
+
+    except Exception as error:
+
+        print("Connection test failed:")
+
+        print(error)
